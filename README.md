@@ -9,6 +9,7 @@
 3. Make sure you add your API KEY and SECRET
 4. Edit the sensor names in the bottom line under "payload" to your sensor names
 5. Restart Home Assistant
+6. Create an automation to upload frequently
 
 It will upload your data for:
 
@@ -31,5 +32,19 @@ rest_command:
        X-Pvoutput-SystemId: SECRET
     payload: "d={{now().strftime('%Y%m%d')}}&t={{now().strftime('%H:%M')}}&v1={{(states('sensor.inverter_today_production')|float*1000)}}&v5={{(states('sensor.outdoor_temperature'))|round(0)}}&v6={{(states('sensor.inverter_grid_l1_voltage'))|round(0)}}&v2={{(states('sensor.inverter_pv_power'))|round(0)}}"
 ``` 
+
+Automation:
+...
+alias: PVOutput Uploader
+description: Uploads values to PVOutput
+triggers:
+  - minutes: /10
+    trigger: time_pattern
+conditions: []
+actions:
+  - data: {}
+    action: rest_command.pvoutput_upload
+mode: single
+...
 
 Hope this helps someone.
