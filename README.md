@@ -1,8 +1,7 @@
 # HA-to-PVoutput
 ![image](https://github.com/user-attachments/assets/d9447d8c-bd72-45d8-b931-5f638e516f5c)
 
-**PVOutput is an online platform for monitoring and sharing solar power generation data. It allows users to upload their solar system data, track performance, and compare it with others worldwide. The platform supports various integrations with solar inverters, energy management systems, and third-party tools for data automation and visualization.
-**
+**PVOutput is an online platform for monitoring and sharing solar power generation data. It allows users to upload their solar system data, track performance, and compare it with others worldwide. The platform supports various integrations with solar inverters, energy management systems, and third-party tools for data automation and visualization.**
 
 **How to:**
 1. Open an account at https://pvoutput.org
