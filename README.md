@@ -53,7 +53,7 @@ actions:
 mode: single
 ```
 ### ☀️ PVupload-to-HA
-If you would like to integrate PVupload to Home Assistant and read the data download the official integration frome here:
+If you would like to integrate PVupload to Home Assistant to read the data and create sensors, download the official integration from here:
 
 [![Add Integration](https://img.shields.io/badge/Add%20Integration-Home%20Assistant-41BDF0?style=for-the-badge&logo=home-assistant)](https://my.home-assistant.io/redirect/config_flow_start/?domain=pvoutput)
 
