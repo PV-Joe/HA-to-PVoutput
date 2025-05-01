@@ -34,7 +34,7 @@ rest_command:
 ``` 
 
 Automation:
-...
+```
 alias: PVOutput Uploader
 description: Uploads values to PVOutput
 triggers:
@@ -45,6 +45,6 @@ actions:
   - data: {}
     action: rest_command.pvoutput_upload
 mode: single
-...
+```
 
 Hope this helps someone.
