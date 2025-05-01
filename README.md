@@ -8,6 +8,7 @@
 3. Go to your configuration.yaml and add the code provided
 3. Make sure you add your API KEY and SECRET
 4. Edit your sensor names to yours
+5. Restart Home Assistant
 
 It will upload your data for:
 
