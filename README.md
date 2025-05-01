@@ -1,10 +1,10 @@
-# HA-to-PVoutput
+### ☀️ HA-to-PVoutput
 ![image](https://github.com/user-attachments/assets/d9447d8c-bd72-45d8-b931-5f638e516f5c)
 
-**This How to describes the integration process to upload your data from Home Assistant to PVoutput.
-PVOutput is an online platform for monitoring and sharing solar power generation data. It allows users to upload their solar system data, track performance, and compare it with others worldwide. The platform supports various integrations with solar inverters, energy management systems, and third-party tools for data automation and visualization.**
+**This How-to describes the integration process to upload your data from Home Assistant to PVoutput.
+PVOutput is an online platform for monitoring and sharing solar power generation data. It allows users to upload their solar system data, track performance, and compare it with others worldwide.**
 
-**How to:**
+### How to:
 1. Open an account at https://pvoutput.org
 2. Go to settings and write down your API Key and Secret
 3. Go to your configuration.yaml and add the code provided
@@ -13,14 +13,14 @@ PVOutput is an online platform for monitoring and sharing solar power generation
 5. Restart Home Assistant
 6. Create an automation to upload frequently
 
-It will upload your data for:
+⬆️ It will upload your data for:
 
-- Production
-- PV Power
-- Outdoor Temperature
-- Grid Voltage
+- ☀️ Production
+- ⚡ PV Power
+- 🌡️ Outdoor Temperature
+- 🔌 Grid Voltage
 
-
+### 🔧 Configuration:
 Add this code to your configuration.yaml
 ```
 #############################################
@@ -37,7 +37,7 @@ rest_command:
     payload: "d={{now().strftime('%Y%m%d')}}&t={{now().strftime('%H:%M')}}&v1={{(states('sensor.inverter_today_production')|float*1000)}}&v5={{(states('sensor.outdoor_temperature'))|round(0)}}&v6={{(states('sensor.inverter_grid_l1_voltage'))|round(0)}}&v2={{(states('sensor.inverter_pv_power'))|round(0)}}"
 ``` 
 
-Automation:
+### ⚙️ Automation:
 - This YAML code uploads your data every 10 minutes
  - If you wish to upload a lower interval edit to max. 5 minutes
 ```
