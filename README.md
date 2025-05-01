@@ -34,8 +34,8 @@ rest_command:
 ``` 
 
 Automation:
-  This YAML code uploads your data every 10 minutes
-  If you wish to upload a lower interval edit to max. 5 minutes
+- This YAML code uploads your data every 10 minutes
+ - If you wish to upload a lower interval edit to max. 5 minutes
 ```
 alias: PVOutput Uploader
 description: Uploads values to PVOutput
