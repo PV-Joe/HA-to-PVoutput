@@ -18,6 +18,8 @@ It will upload your data for:
 - Outdoor Temperature
 - Grid Voltage
 
+
+Add this code to your configuration.yaml
 ```
 #############################################
 # PVoutput | Upload to https://pvoutput.org #
