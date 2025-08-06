@@ -4,7 +4,7 @@
 **This How-to describes the integration process to upload your data from Home Assistant to PVoutput.
 PVOutput is an online platform for monitoring and sharing solar power generation data. It allows users to upload their solar system data, track performance, and compare it with others worldwide.**
 
-### How to:
+### 💡 How to:
 1. Open an account at https://pvoutput.org
 2. Go to settings and write down your API Key and Secret
 3. Go to your configuration.yaml and add the code provided
