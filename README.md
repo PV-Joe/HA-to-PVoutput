@@ -1,62 +1,112 @@
-### ☀️ HA-to-PVoutput
+# ☀️ Home Assistant → PVOutput
+
 ![image](https://github.com/user-attachments/assets/d9447d8c-bd72-45d8-b931-5f638e516f5c)
 
-**This How-to describes the integration process to upload your data from Home Assistant to PVoutput.
-PVOutput is an online platform for monitoring and sharing solar power generation data. It allows users to upload their solar system data, track performance, and compare it with others worldwide.**
+This guide explains how to upload your Home Assistant solar data to PVOutput.
 
-### 💡 How to:
-1. Open an account at https://pvoutput.org
-2. Go to settings and write down your API Key and Secret
-3. Go to your configuration.yaml and add the code provided
-3. Make sure you add your API KEY and SECRET
-4. Edit the sensor names in the bottom line under "payload" to your sensor names
-5. Restart Home Assistant
-6. Create an automation to upload frequently
+PVOutput is an online platform for monitoring and sharing solar power generation data. It allows users to upload their solar system data, track performance, and compare it with other systems worldwide.
 
-⬆️ It will upload your data for:
+---
 
-- ☀️ Production
-- ⚡ PV Power
-- 🌡️ Outdoor Temperature
-- 🔌 Grid Voltage
+## 💡 Setup Guide
 
-### 🔧 Configuration:
-Exchange the sensor names in "payload" to your sensors.
-Add the code to your configuration.yaml
-...
+1. Create an account at https://pvoutput.org
+2. Go to **Settings** and copy your:
+   - API Key
+   - System ID
+3. Open your `configuration.yaml`
+4. Add the REST command below
+5. Replace:
+   - `YOUR_API_KEY`
+   - `YOUR_SYSTEM_ID`
+6. Edit the sensor names inside `payload` to match your own sensors
+7. Restart Home Assistant
+8. Create the automation to upload data periodically
+
+---
+
+## ⬆️ Uploaded values
+
+This configuration uploads:
+
+- ☀️ Daily production
+- ⚡ Current PV power
+- 🌡️ Outdoor temperature
+- 🔌 Grid voltage
+
+---
+
+## 🔧 Configuration
+
+Add this to your `configuration.yaml`:
+
+```yaml
 #############################################
-# PVoutput | Upload to https://pvoutput.org #
+# PVOutput Upload
 #############################################
+
 rest_command:
   pvoutput_upload:
-    url: https://pvoutput.org/service/r2/addstatus.jsp
-    method: post
+    url: "https://pvoutput.org/service/r2/addstatus.jsp"
+    method: POST
     content_type: "application/x-www-form-urlencoded"
     headers:
-       X-Pvoutput-Apikey: KEY
-       X-Pvoutput-SystemId: SECRET
-    payload: "d={{now().strftime('%Y%m%d')}}&t={{now().strftime('%H:%M')}}&v1={{(states('sensor.inverter_today_production')|float*1000)}}&v5={{(states('sensor.outdoor_temperature'))|round(0)}}&v6={{(states('sensor.inverter_grid_l1_voltage'))|round(0)}}&v2={{(states('sensor.inverter_pv_power'))|round(0)}}"
-``` 
-
-### ⚙️ Automation:
-- This YAML code uploads your data every 10 minutes
- - If you wish to upload a lower interval edit to max. 5 minutes
+      X-Pvoutput-Apikey: YOUR_API_KEY
+      X-Pvoutput-SystemId: YOUR_SYSTEM_ID
+    payload: >
+      d={{ now().strftime('%Y%m%d') }}&
+      t={{ now().strftime('%H:%M') }}&
+      v1={{ (states('sensor.inverter_today_production') | float * 1000) | round(0) }}&
+      v2={{ states('sensor.inverter_pv_power') | float | round(0) }}&
+      v5={{ states('sensor.outdoor_temperature') | float | round(0) }}&
+      v6={{ states('sensor.inverter_grid_l1_voltage') | float | round(0) }}
 ```
+
+### Sensor Mapping
+
+| PVOutput Field | Example Sensor |
+|---------------|---------------|
+| `v1` Daily Generation (Wh) | `sensor.inverter_today_production` |
+| `v2` Power Generation (W) | `sensor.inverter_pv_power` |
+| `v5` Temperature (°C) | `sensor.outdoor_temperature` |
+| `v6` Voltage (V) | `sensor.inverter_grid_l1_voltage` |
+
+---
+
+## ⚙️ Automation
+
+This uploads data every **10 minutes**.
+
+PVOutput supports a minimum upload interval of **5 minutes**, so do not set it lower.
+
+```yaml
 alias: PVOutput Uploader
-description: Uploads values to PVOutput
-triggers:
-  - minutes: /10
-    trigger: time_pattern
-conditions: []
-actions:
-  - data: {}
-    action: rest_command.pvoutput_upload
+description: Upload values to PVOutput
+
+trigger:
+  - platform: time_pattern
+    minutes: "/10"
+
+condition: []
+
+action:
+  - service: rest_command.pvoutput_upload
+
 mode: single
 ```
-### ☀️ PVupload-to-HA
-If you would like to integrate PVupload to Home Assistant to read the data and create sensors, download the official integration from here:
+
+---
+
+## ☀️ PVOutput → Home Assistant
+
+If you want to import PVOutput data back into Home Assistant and create sensors, install the official integration:
 
 [![Add Integration](https://img.shields.io/badge/Add%20Integration-Home%20Assistant-41BDF0?style=for-the-badge&logo=home-assistant)](https://my.home-assistant.io/redirect/config_flow_start/?domain=pvoutput)
 
+---
 
-Hope this helps someone.
+## ✅ Result
+
+Your Home Assistant solar data will now be uploaded automatically to PVOutput.
+
+If this helped you, feel free to ⭐ the repository.
