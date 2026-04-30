@@ -1,6 +1,7 @@
 # ☀️ Home Assistant → PVOutput
 
-<img width="2679" height="456" alt="PVOUTPUT" src="https://github.com/user-attachments/assets/02c9ce1f-03e1-40e6-bbeb-f3e40b4737a4" />
+<img width="2679" height="475" alt="PVOUTPUT" src="https://github.com/user-attachments/assets/79d81fd3-2084-4785-a097-d8171d4a0488" />
+
 
 ---
 This guide explains how to upload your Home Assistant solar data to PVOutput.
