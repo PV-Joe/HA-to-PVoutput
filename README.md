@@ -23,6 +23,7 @@ PVOutput is an online platform for monitoring and sharing solar power generation
 ### 🔧 Configuration:
 Exchange the sensor names in "payload" to your sensors.
 Add the code to your configuration.yaml
+...
 #############################################
 # PVoutput | Upload to https://pvoutput.org #
 #############################################
