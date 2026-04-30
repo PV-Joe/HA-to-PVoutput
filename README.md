@@ -1,7 +1,8 @@
 # ☀️ Home Assistant → PVOutput
 
-![image](https://github.com/user-attachments/assets/d9447d8c-bd72-45d8-b931-5f638e516f5c)
+<img width="2679" height="456" alt="PVOUTPUT" src="https://github.com/user-attachments/assets/02c9ce1f-03e1-40e6-bbeb-f3e40b4737a4" />
 
+---
 This guide explains how to upload your Home Assistant solar data to PVOutput.
 
 PVOutput is an online platform for monitoring and sharing solar power generation data. It allows users to upload their solar system data, track performance, and compare it with other systems worldwide.
