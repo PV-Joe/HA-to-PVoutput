@@ -21,8 +21,8 @@ PVOutput is an online platform for monitoring and sharing solar power generation
 - 🔌 Grid Voltage
 
 ### 🔧 Configuration:
-Add this code to your configuration.yaml
-```
+Exchange the sensor names in "payload" to your sensors.
+Add the code to your configuration.yaml
 #############################################
 # PVoutput | Upload to https://pvoutput.org #
 #############################################
