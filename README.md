@@ -77,7 +77,7 @@ rest_command:
 
 ## ⚙️ Automation
 
-This uploads data every **10 minutes**.
+This Home Assistant Automation uploads data every **10 minutes**.
 
 PVOutput supports a minimum upload interval of **5 minutes**, so do not set it lower.
 
